@@ -1,7 +1,7 @@
 const secondsInYear = 31557600;
 const planetYear = {
     'earth': 1,
-    'mecury': 0.24,
+    'mercury': 0.24,
     'venus': 0.61,
     'mars': 1.88,
     'jupiter': 11.86,
