@@ -10,4 +10,6 @@ const planetYear = {
     'neptune': 164.79132
 };
 
-const dogYears = (planetName, dogAgeSecs) => (dogAgeSecs/secondsInYear) * planetYear[planetName];
+const dogYears = (planetName, dogAgeSecs) => (dogAgeSecs/secondsInYear) * planetYear[planetName] * 7;
+
+console.log(dogYears('earth', 1000000000));
