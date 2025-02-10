@@ -17,7 +17,7 @@ bool with a boolean value.
 nested, arr and obj must be frozen, so that their elements or properties cannot be changed.
 */
 
-const escapeStr = "'\\/\"";
+const escapeStr = "\`\\/\"";
 const arr = [4,'2'];
 const obj = {
     str:"string",
