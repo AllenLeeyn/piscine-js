@@ -1,4 +1,4 @@
-const smalls = () => Number.NEGATIVE_INFINITY;
-const biggie = () => Number.POSITIVE_INFINITY;
+const smalls = () => Number.MIN_VALUE;
+const biggie = () => Number.MAX_VALUE;
 
 console.log(biggie());
