@@ -12,5 +12,5 @@ and the subsequent characters are lower case.
 const words = (str) => str.split(' ');
 const sentence = (words) => words.join(' ');
 const yell = (str) => str.toUpperCase();
-const whisper = (str) => str.tolowerCase();
+const whisper = (str) => '*'+str.toLowerCase()+'*';
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1).tolowerCase();
