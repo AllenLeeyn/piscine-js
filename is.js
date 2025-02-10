@@ -23,7 +23,7 @@ is.bool = (n) => typeof n === 'boolean';
 is.undef = (n) => n === undefined;
 is.def = (n) => !is.undef(n);
 is.arr = (n) => Array.isArray(n);
-is.obj = (n) => typeof n === 'object' || typeof n === null;
+is.obj = (n) => (typeof n === 'object' || typeof n === null) && !is.arr(n) && n !== null;
 is.fun = (n) => typeof n === 'function';
 is.falsy = (n) =>{
  return n === null || is.undef(n) || n === false || is.nan(n) || n === 0 || n === -0 || n === 0n || n === "";
@@ -32,19 +32,19 @@ is.truthy = (n) => !is.falsy(n);
 
 /* 
 const t = (f) => tests.push(f)
-console.log(is.nan(0));
-console.log(is.nan(NaN));
-console.log(is.nan(true));
-console.log(is.nan(''));
-console.log(is.nan('💩'));
-console.log(is.nan(undefined));
-console.log(is.nan(t));
-console.log(is.nan([]));
-console.log(is.nan({}));
-console.log(is.nan([1, Array(1), [], 2]));
-console.log(is.nan({length: 10}));
-console.log(is.nan(Object.create(null)));
-console.log(is.nan(null));
-console.log(is.nan(console.log));
-console.log(is.nan(void 0)); 
-*/
+console.log(is.obj(0));
+console.log(is.obj(NaN));
+console.log(is.obj(true));
+console.log(is.obj(''));
+console.log(is.obj('💩'));
+console.log(is.obj(undefined));
+console.log(is.obj(t));
+console.log(is.obj([]));
+console.log(is.obj({}));
+console.log(is.obj([1, Array(1), [], 2]));
+console.log(is.obj({length: 10}));
+console.log(is.obj(Object.create(null)));
+console.log(is.obj(null));
+console.log(is.obj(console.log));
+console.log(is.obj(void 0)); 
+ */
