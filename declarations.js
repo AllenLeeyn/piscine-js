@@ -33,4 +33,6 @@ const nested = {
         num:123,
         bool:true
     }};
-Object.freeze(nested);;
+Object.freeze(nested);
+Object.freeze(nested.arr);
+Object.freeze(nested.obj);
