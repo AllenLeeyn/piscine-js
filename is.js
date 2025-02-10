@@ -15,8 +15,8 @@ is.truthy: value is truthy.
 is.falsy: value is falsy.
 */
 
-is.num = (n) => typeof n === 'number';
-is.nan = (n) => !is.num(n);
+is.num = (n) => typeof n === 'number' && !Number.isNaN(n);
+is.nan = (n) => typeof n === 'number' && !Number.isNaN(n);
 is.str = (n) => typeof n === 'string';
 is.bool = (n) => typeof n === 'boolean';
 is.undef = (n) => n === undefined;
