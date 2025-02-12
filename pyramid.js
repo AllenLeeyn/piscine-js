@@ -10,7 +10,7 @@ const pyramid = (str, num) =>{
     const space = printLn(' ', str.length);
     let result = (num > 0) ? printLn(str, 2 * num - 1) : '';
 
-    for (let i = num-1; i >= 0; i--){
+    for (let i = num-1; i > 0; i--){
         let ln = printLn (space, num-i) + printLn(str, 2 *i - 1);
         result = ln + '\n' + result;
     };
