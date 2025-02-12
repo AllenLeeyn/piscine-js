@@ -73,7 +73,7 @@ const trunc = (n) =>{
     return divide(n,1)
 };
 
-
+/*
 const nums = [Math.PI, -Math.PI, Math.E, -Math.E, 0]
 console.log(nums.map(round))
 console.log(nums.map(floor))
