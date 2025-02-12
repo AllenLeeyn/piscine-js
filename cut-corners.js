@@ -70,7 +70,7 @@ const trunc = (n) =>{
     if (n === Infinity || n === -Infinity || Number.isInteger(n)) {
         return n;
     }
-    return divide(n,1)
+    return n| 0;
 };
 
 /*
@@ -79,7 +79,7 @@ console.log(nums.map(round))
 console.log(nums.map(floor))
 console.log(nums.map(trunc))
 console.log(nums.map(ceil))
-console.log(trunc(0xfffffffff))
+console.log(trunc(0xfffff + 0.5))
 
 /* 
 console.log((nums.map(round), [3, -3, 3, -3, 0]))
