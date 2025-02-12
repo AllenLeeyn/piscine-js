@@ -35,10 +35,10 @@ const trunc = (n) =>{
     if (n === Infinity || n === -Infinity || Number.isInteger(n)) {
         return n;
     }
-    let result = multiply(divide(n, 0xf), 0xf) 
+    let result = multiply(divide(n, 0xfff), 0xfff) 
     console.log(result);
     n = n - result
-    for (let i = 0xf-1; i > 0; i--){
+    for (let i = 0xff-1; i > 0; i--){
         let newResult = multiply(divide(n, i), i)
         result = result + newResult
         n = n - newResult 
@@ -77,3 +77,18 @@ const floor = (n) => {
     let result = divide(n,1)+shift;
     return (isNeg)? -result: result;
 };
+
+/*
+const nums = [Math.PI, -Math.PI, Math.E, -Math.E, 0]
+console.log(nums.map(round))
+console.log(nums.map(floor))
+console.log(nums.map(trunc))
+console.log(nums.map(ceil))
+console.log(trunc(0xfffffffff + 0.5))
+
+/* 
+console.log((nums.map(round), [3, -3, 3, -3, 0]))
+console.log((nums.map(floor), [3, -4, 2, -3, 0]))
+console.log((nums.map(trunc), [3, -3, 2, -2, 0]))
+console.log((nums.map(ceil), [4, -3, 3, -2, 0])) 
+*/
