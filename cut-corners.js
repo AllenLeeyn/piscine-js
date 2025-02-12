@@ -14,11 +14,11 @@ const multiply = (a, b) =>{
 
 const divide = (a, b) => {
     const isNeg = (a < 0) !== (b < 0);
-    if (b == 0) {return 0;};
+    if (b === 0) {return 0;};
     a = abs(a);
     b = abs(b);
     let result = 0;
-    for (let i = 0; multiply(b,i) < a;i++ ){
+    for (let i = 0; multiply(b,i) < a && 1 < a;i++ ){
         result = i;
     }
     return (isNeg)? -result: result;
