@@ -64,17 +64,3 @@ const trunc = (n) =>{
     }
     return divide(n,1)
 };
-
-
-const nums = [Math.PI, -Math.PI, Math.E, -Math.E, 0]
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))
-
-/* 
-console.log((nums.map(round), [3, -3, 3, -3, 0]))
-console.log((nums.map(floor), [3, -4, 2, -3, 0]))
-console.log((nums.map(trunc), [3, -3, 2, -2, 0]))
-console.log((nums.map(ceil), [4, -3, 3, -2, 0])) 
-*/
