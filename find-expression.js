@@ -1,19 +1,17 @@
-const add4 = '+4'
-const mul2 = '*2'
 
 const findExpression = (num) => {
-    let result = '';
+    let result = [];
     for (;num !== 1;){
         if (num%2 === 0){
-            result = result + mul2;
+            result.push(mul2);
             num = num/2;
         } else {
-            result = add4 + result;
+            result.push(add4);
             num = num-4;
         };
         if (num < 1){
             return undefined;
         };
     };
-    return '1'+result;
+    return '1 '+result.reverse().join(' ');
 };
