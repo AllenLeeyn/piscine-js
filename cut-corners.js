@@ -18,21 +18,33 @@ const divide = (a, b) => {
     a = abs(a);
     b = abs(b);
     let result = 0;
-    for (let i = 1; multiply(b,i) < a;i=i+i ){
-        result = i;
-    }
-    a = a-multiply(b,result);
-    if (b > 0){
-        let secResult = 0;
-        for (let i = 1; multiply(b,i) < a;i++ ){
-            secResult = i;
+    for (;a > b;){
+        let curResult = 0;
+        for (let i = 1; multiply(b,i) <= a;i=i+i ){
+            curResult = i;
         }
-        result = result + secResult
+        a = a - multiply(b, curResult);
+        result = result + curResult;
     }
     return (isNeg)? -result: result;
 };
 
 const modulo = (a, b) =>a - multiply(b, divide(a, b));
+
+const trunc = (n) =>{
+    if (n === Infinity || n === -Infinity || Number.isInteger(n)) {
+        return n;
+    }
+    let result = multiply(divide(n, 0xf), 0xf) 
+    console.log(result);
+    n = n - result
+    for (let i = 0xf-1; i > 0; i--){
+        let newResult = multiply(divide(n, i), i)
+        result = result + newResult
+        n = n - newResult 
+    }
+    return result
+};
 
 const round = (n) => {
     if (n === Infinity || n === -Infinity || Number.isInteger(n)) {
@@ -65,25 +77,3 @@ const floor = (n) => {
     let result = divide(n,1)+shift;
     return (isNeg)? -result: result;
 };
-
-const trunc = (n) =>{
-    if (n === Infinity || n === -Infinity || Number.isInteger(n)) {
-        return n;
-    }
-    return n| 0;
-};
-
-/*
-const nums = [Math.PI, -Math.PI, Math.E, -Math.E, 0]
-console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))
-console.log(trunc(0xfffff + 0.5))
-
-/* 
-console.log((nums.map(round), [3, -3, 3, -3, 0]))
-console.log((nums.map(floor), [3, -4, 2, -3, 0]))
-console.log((nums.map(trunc), [3, -3, 2, -2, 0]))
-console.log((nums.map(ceil), [4, -3, 3, -2, 0])) 
-*/
