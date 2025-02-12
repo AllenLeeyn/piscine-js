@@ -1,18 +1,11 @@
 const get = (src, path) =>{
     const keys = path.split('.');
-    let result = undefined;
-    for (const curKey of keys){
-        let found = false;
-        for (const [key, value] of Object.entries(src)) {
-            if (curKey === key){
-                src = value;
-                found = true;
-                break;
-            }
-        };
-        if (!found){
-            return undefined;
+    let result = src;
+    for (let key of keys) {
+        result = result[key]
+        if (result === undefined) {
+            return undefined
         }
     }
-    return src;
+    return result;
 };
