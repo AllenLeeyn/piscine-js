@@ -23,5 +23,6 @@ const getCombi = (num, start, curArr, resultArr) => {
 
 const sums = (num) => {
     const count = (num/2);
+    if (num === 0 || num === 1){return []};
     return getCombi(num, 1, [],[]);
 };
