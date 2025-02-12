@@ -1,12 +1,12 @@
 const triangle = (str, num) =>{
-    let result = (num > 0) ? str + '\n': '';
+    let result = (num > 0) ? str : '';
 
     for (let i = 1; i < num; i++){
         let ln = '';
         for (let j = 0; j <= i; j++){
             ln = ln + str;
         };
-        result = result + ln + '\n';
+        result = result + '\n' + ln;
     };
     return result
 };
