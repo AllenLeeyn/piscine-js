@@ -31,6 +31,9 @@ const slice =(arr, start, end)=>{
 };
 
 const split = (str, sep) =>{
+    if (str === ''){
+        return [''];
+    }
     if (sep.length > str.length){
         return str;
     };
