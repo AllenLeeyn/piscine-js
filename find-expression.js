@@ -8,7 +8,12 @@ const findExpression = (num) => {
             result = add4 + result;
             num = num-4;
         }
-
+        if (num === 0){
+            break;
+        };
+        if (num < 0){
+            return undefined;
+        };
     };
     return '1'+result;
 };
