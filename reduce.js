@@ -1,4 +1,5 @@
 const reduce = (arr, fn, acc) => {
+
     if (acc !== undefined){
         arr = [acc, ...arr];
     };
@@ -8,8 +9,13 @@ const reduce = (arr, fn, acc) => {
     };
     return result;
 };
+
 const reduceRight = (arr, fn, acc) => {
-    return reduce(arr.reverse(), fn, acc);
+    const newArr = [];
+    for (let i = arr.length-1; i >= 0; i--){
+        newArr.push(arr[i]);
+    };
+    return reduce(newArr, fn, acc);
 };
 
 const fold = (arr, fn, acc) => {
