@@ -1,4 +1,4 @@
-function flow(arr) {
+const flow = (arr) => {
     return (...args) => {
         let result = arr[0](...args)
         for (let i = 1; i < arr.length; i++) {
