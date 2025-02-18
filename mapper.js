@@ -20,7 +20,7 @@ const forEach = (arr, fn) => {
 
 const map = (arr, fn) => {
     const result = [];
-    forEach(arr, (x) => result.push(fn(x)));
+    forEach(arr, (x, i, arr) => result.push(fn(x, i, arr)));
     return result;
 };
 
