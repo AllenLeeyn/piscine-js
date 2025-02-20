@@ -35,7 +35,7 @@ export function explore(){
         let fileName = place.name.split(',')[0];
         fileName = fileName.toLowerCase();
         fileName = fileName.replaceAll(' ', '-');
-        el.style.background = 'url(/where-do-we-go_images/'+fileName+'.jpg)';
+        el.style.background = 'url(./where-do-we-go_images/'+fileName+'.jpg)';
         el.style.backgroundSize = 'cover';
         body.appendChild(el);
 
