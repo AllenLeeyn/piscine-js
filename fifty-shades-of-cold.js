@@ -9,7 +9,7 @@ export function generateClasses(){
 
 export function generateColdShades(){
     colors.forEach((color) => {
-        if (/(aqua|blue|turquoise|green|vyan|navy|purple)/.test(color)){
+        if (/(aqua|blue|turquoise|green|cyan|navy|purple)/.test(color)){
             const newDiv = document.createElement('div');
             newDiv.classList.add(color);
             newDiv.textContent = color
