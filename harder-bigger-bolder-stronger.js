@@ -3,7 +3,7 @@ export function generateLetters(){
     const count = 120;
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const initFontSize = 11;
-    const fontWeight = [300, 400, 600];
+    const fontWeight = ['300', '400', '600'];
 
     for (let i = 0; i < count; i++){
         const ele = document.createElement('div');
