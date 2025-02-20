@@ -1,36 +1,40 @@
+const cirRad = 25;
+let bBoxLft = 0, bBoxRgt = 0, bBoxTop = 0, bBoxBot = 0;
+
 export function createCircle(){
-    document.addEventListener('click',(event) =>{
+    document.addEventListener('click',(e) =>{
         const newDiv = document.createElement('div');
         newDiv.classList.add('circle');
-        newDiv.style.left = event.clientX-25+'px';
-        newDiv.style.top = event.clientY-25+'px';
+        newDiv.style.left = e.clientX-cirRad+'px';
+        newDiv.style.top = e.clientY-cirRad+'px';
         newDiv.style.background = 'white';
+        if ((e.clientX-(cirRad+1) > bBoxLft && e.clientX+(cirRad+1) < bBoxRgt) && 
+        (e.clientY-(cirRad+1) > bBoxTop && e.clientY+(cirRad+1) < bBoxBot)){
+            newDiv.style.background = 'var(--purple)';
+        };
         document.body.appendChild(newDiv);
     });
 };
 
 export function moveCircle(){
-    const box = document.getElementById('box');
-    const bBox = box.getBoundingClientRect();
-    console.log(bBox);
-    document.addEventListener('mousemove',(event) =>{
+    document.addEventListener('mousemove',(e) =>{
         const curCircle = document.body.lastChild;
         if (!curCircle.classList.contains('circle')) return;
-        if ((event.clientX-26 > bBox.left && event.clientX+26 < bBox.right) && 
-        (event.clientY-26 > bBox.top && event.clientY+26 < bBox.bottom)){
+        if ((e.clientX-(cirRad+1) > bBoxLft && e.clientX+(cirRad+1) < bBoxRgt) && 
+        (e.clientY-(cirRad+1) > bBoxTop && e.clientY+(cirRad+1) < bBoxBot)){
             curCircle.style.background = 'var(--purple)';
         };
 
         if (curCircle.style.background === 'var(--purple)'){
-            if (event.clientX-26 > bBox.left && event.clientX+26 < bBox.right) {
-                curCircle.style.left = event.clientX-25+'px';
+            if (e.clientX-(cirRad+1) > bBoxLft && e.clientX+(cirRad+1) < bBoxRgt) {
+                curCircle.style.left = e.clientX-cirRad+'px';
             } 
-            if (event.clientY-26 > bBox.top && event.clientY+26 < bBox.bottom) {
-                curCircle.style.top = event.clientY-25+'px';
+            if (e.clientY-(cirRad+1) > bBoxTop && e.clientY+(cirRad+1) < bBoxBot) {
+                curCircle.style.top = e.clientY-cirRad+'px';
             }
         } else {
-            curCircle.style.left = event.clientX-25+'px';
-            curCircle.style.top = event.clientY-25+'px';
+            curCircle.style.left = e.clientX-cirRad+'px';
+            curCircle.style.top = e.clientY-cirRad+'px';
         }
     });
 };
@@ -40,4 +44,9 @@ export function setBox(){
     newDiv.classList.add('box');
     newDiv.id = 'box';
     document.body.appendChild(newDiv);
+    const bBox = newDiv.getBoundingClientRect();
+    bBoxLft = bBox.left; 
+    bBoxRgt = bBox.right;
+    bBoxTop = bBox.top;
+    bBoxBot = bBox.bottom;
 };
