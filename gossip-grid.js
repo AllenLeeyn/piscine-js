@@ -95,7 +95,8 @@ export function grid(){
         const el = document.createElement('div');
         el.classList.add('gossip');
         el.textContent = formText.value;
-        body.appendChild(el);
+        const nextSibling = formEl.nextElementSibling;
+        formEl.parentNode.insertBefore(el, nextSibling);
         formText.value = '';
     });
 
