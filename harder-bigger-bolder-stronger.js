@@ -9,7 +9,13 @@ export function generateLetters(){
         const ele = document.createElement('div');
         ele.textContent = alphabet[Math.floor(Math.random()*26)];
         ele.style.fontSize = (initFontSize + i + 'px');
-        ele.style.fontWeight = fontWeight[i%40];
+        if (i >= 80){
+            ele.style.fontWeight = fontWeight[2];
+        } else if (i >= 40){
+            ele.style.fontWeight = fontWeight[1];
+        } else {
+            ele.style.fontWeight = fontWeight[0];
+        }
         body.appendChild(ele);
     }
 }
