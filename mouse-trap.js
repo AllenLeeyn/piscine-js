@@ -18,10 +18,11 @@ export function createCircle(){
 
 export function moveCircle(){
     document.addEventListener('mousemove',(e) =>{
+        
         const curCircle = document.body.lastChild;
         if (!curCircle.classList.contains('circle')) return;
-        const isInsideX = e.clientX-(cirRad) > bBoxLft && e.clientX+(cirRad) < bBoxRgt;
-        const isInsideY = e.clientY-(cirRad) > bBoxTop && e.clientY+(cirRad) < bBoxBot;
+        const isInsideX = e.clientX > bBoxLft+cirRad && e.clientX < bBoxRgt-cirRad;
+        const isInsideY = e.clientY > bBoxTop+cirRad && e.clientY < bBoxBot-cirRad;
         const isInside = isInsideX && isInsideY;
 
         if (isInside){
