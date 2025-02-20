@@ -18,7 +18,13 @@ export function createCircle(){
 
 export function moveCircle(){
     document.addEventListener('mousemove',(e) =>{
-        
+        const box = document.getElementsByClassName('box')[0];
+        const bBox = box.getBoundingClientRect();
+        bBoxLft = bBox.left; 
+        bBoxRgt = bBox.right;
+        bBoxTop = bBox.top;
+        bBoxBot = bBox.bottom;
+
         const curCircle = document.body.lastChild;
         if (!curCircle.classList.contains('circle')) return;
         const isInsideX = e.clientX > bBoxLft+cirRad && e.clientX < bBoxRgt-cirRad;
@@ -47,9 +53,4 @@ export function setBox(){
     const newDiv = document.createElement('div');
     newDiv.classList.add('box');
     document.body.appendChild(newDiv);
-    const bBox = newDiv.getBoundingClientRect();
-    bBoxLft = bBox.left; 
-    bBoxRgt = bBox.right;
-    bBoxTop = bBox.top;
-    bBoxBot = bBox.bottom;
 };
