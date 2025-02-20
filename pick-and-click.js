@@ -7,8 +7,10 @@ export function pick(){
     body.appendChild(svg);
 
     const xAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    xAxis.id = 'axisX';
     svg.appendChild(xAxis);
     const yAxis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    yAxis.id = 'axisY';
     svg.appendChild(yAxis);
 
     const hueDiv = document.createElement('div');
@@ -28,15 +30,15 @@ export function pick(){
     let hue = 0, lumi = 0;
 
     document.addEventListener('mousemove',(e) =>{
-        xAxis.setAttribute('x1', 0);
-        xAxis.setAttribute('y1', e.clientY);
-        xAxis.setAttribute('x2', window.innerWidth);
-        xAxis.setAttribute('y2', e.clientY);
+        yAxis.setAttribute('x1', 0);
+        yAxis.setAttribute('y1', e.clientY);
+        yAxis.setAttribute('x2', window.innerWidth);
+        yAxis.setAttribute('y2', e.clientY);
 
-        yAxis.setAttribute('x1', e.clientX);
-        yAxis.setAttribute('y1', 0);
-        yAxis.setAttribute('x2', e.clientX);
-        yAxis.setAttribute('y2', window.innerHeight);
+        xAxis.setAttribute('x1', e.clientX);
+        xAxis.setAttribute('y1', 0);
+        xAxis.setAttribute('x2', e.clientX);
+        xAxis.setAttribute('y2', window.innerHeight);
 
         hue = Math.round(e.clientX/window.innerWidth*360);
         lumi = Math.round(e.clientY/window.innerHeight*100);
