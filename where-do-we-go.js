@@ -46,7 +46,6 @@ export function explore(){
     body.appendChild(tag);
 
     let prevY = 0;
-
     document.addEventListener('scroll', (e)=>{
         if (prevY > window.scrollY) {
             compass.textContent = 'N';
@@ -57,5 +56,7 @@ export function explore(){
         const index = Math.round(window.scrollY/window.innerHeight);
         tag.textContent = places[index].name + '\n' + places[index].coordinates;
         tag.style.color = places[index].color;
+        tag.href = 'https://www.google.com/maps/place/'+places[index].coordinates.replaceAll(' ','+');
+        tag.target = '_blank';
     });
 };
