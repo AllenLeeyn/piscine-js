@@ -56,7 +56,10 @@ export function explore(){
         const index = Math.round(window.scrollY/window.innerHeight);
         tag.textContent = places[index].name + '\n' + places[index].coordinates;
         tag.style.color = places[index].color;
-        tag.href = 'https://www.google.com/maps/place/'+places[index].coordinates.replaceAll(' ','+');
+        let refLink = places[index].coordinates.replaceAll(' ','%20');
+        refLink = refLink.replaceAll('°', '%C2%B0');
+        refLink = refLink.replaceAll('"', '%22');
+        tag.href = 'https://www.google.com/maps/place/'+refLink;
         tag.target = '_blank';
     });
 };
