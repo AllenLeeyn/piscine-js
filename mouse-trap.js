@@ -20,16 +20,19 @@ export function moveCircle(){
     document.addEventListener('mousemove',(e) =>{
         const curCircle = document.body.lastChild;
         if (!curCircle.classList.contains('circle')) return;
-        if ((e.clientX-(cirRad+1) > bBoxLft && e.clientX+(cirRad+1) < bBoxRgt) && 
-        (e.clientY-(cirRad+1) > bBoxTop && e.clientY+(cirRad+1) < bBoxBot)){
+        const isInsideX = e.clientX-(cirRad) > bBoxLft && e.clientX+(cirRad) < bBoxRgt;
+        const isInsideY = e.clientY-(cirRad) > bBoxTop && e.clientY+(cirRad) < bBoxBot;
+        const isInside = isInsideX && isInsideY;
+
+        if (isInside){
             curCircle.style.background = 'var(--purple)';
         };
 
         if (curCircle.style.background === 'var(--purple)'){
-            if (e.clientX-(cirRad+1) > bBoxLft && e.clientX+(cirRad+1) < bBoxRgt) {
+            if (isInsideX) {
                 curCircle.style.left = e.clientX-cirRad+'px';
             } 
-            if (e.clientY-(cirRad+1) > bBoxTop && e.clientY+(cirRad+1) < bBoxBot) {
+            if (isInsideY) {
                 curCircle.style.top = e.clientY-cirRad+'px';
             }
         } else {
@@ -42,7 +45,6 @@ export function moveCircle(){
 export function setBox(){
     const newDiv = document.createElement('div');
     newDiv.classList.add('box');
-    newDiv.id = 'box';
     document.body.appendChild(newDiv);
     const bBox = newDiv.getBoundingClientRect();
     bBoxLft = bBox.left; 
