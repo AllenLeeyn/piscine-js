@@ -20,17 +20,26 @@ const reduceEntries = (obj, fn, acc) => {
     return acc;
 };
 
-const calcValue = (val, num) => {
-    const str = val.toString();
-    const match = str.match(/(?:\.\d*)/);
-    const precision = match ? match[0].length - 1 : 1;
-    num = (val/100) * num;
-    return num % 1 === 0 ? num : parseFloat(num.toFixed(precision));
+const formatNumber = (num) => {
+    let numStr = num.toString();
+    const zeroRegex = /(?!(\.(\d+)?))(0){3,}1$/;
+    const zerosStr = numStr.match(zeroRegex);
+    if (zerosStr){
+        numStr = numStr.replace(zerosStr[0], '');
+    };
+    const nineRegex = /(?!(\.(\d+)?))(9){3,}9$/;
+    const nineStr = numStr.match(nineRegex);
+    if (nineStr){
+        numStr = numStr.replace(nineStr[0], '');
+        let numParts = numStr.split('.');
+        numParts[1] = String(Number(numParts[1])+1)
+        numStr = numParts.join('.');
+    };
+    return Number(numStr);
 };
 
 const totalCalories = (obj) => reduceEntries(obj, (acc = 0, [key, val]) => {
-    const num = acc + calcValue(val, nutritionDB[key].calories);
-    return num % 1 === 0 ? num : parseFloat(num.toFixed(1));
+    return formatNumber(acc + (val/100)*nutritionDB[key].calories);
 });
 
 const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
@@ -40,11 +49,11 @@ const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
 const cartTotal = (obj) => mapEntries(obj, ([key, val]) => {
 
     return [key, {
-        calories: calcValue(val, nutritionDB[key].calories),
-        protein: calcValue(val, nutritionDB[key].protein),
-        carbs: calcValue(val, nutritionDB[key].carbs),
-        sugar: calcValue(val, nutritionDB[key].sugar),
-        fiber: calcValue(val, nutritionDB[key].fiber),
-        fat: calcValue(val, nutritionDB[key].fat),
+        calories: formatNumber((val/100)*nutritionDB[key].calories),
+        protein: formatNumber((val/100)*nutritionDB[key].protein),
+        carbs: formatNumber((val/100)*nutritionDB[key].carbs),
+        sugar: formatNumber((val/100)*nutritionDB[key].sugar),
+        fiber: formatNumber((val/100)*nutritionDB[key].fiber),
+        fat: formatNumber((val/100)*nutritionDB[key].fat),
     }]
 });
