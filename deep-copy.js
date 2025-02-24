@@ -6,9 +6,7 @@ const deepCopy = (obj) => {
         };
     } else {
         for (const [key, val] of Object.entries(obj)){
-            if (typeof val === 'object') {
-                objArr.push([key, deepCopy(val)])
-            } else objArr.push([key, val]);
+            objArr.push([key,deepCopy(val)]);
         };
         return Object.fromEntries(objArr);
     };
