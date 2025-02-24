@@ -5,13 +5,15 @@ const pronoun = (str) => {
     const words = str.split(' ');
 
     for (let i = 0; i < words.length; i++) {
-        if (pronouns.includes(words[i])){
-            if (!obj[words[i]]){
-                obj[words[i]] = { word :[], count: 1};
+        let word = words[i].toLowerCase();
+        let tgt = obj[word]
+        if (pronouns.includes(word)){
+            if (!tgt){
+                tgt = { word :[], count: 1};
             } else {
-                obj[words[i]].count++;
+                tgt.count++;
             }
-            if (!pronouns.includes(words[i+1])) obj[words[i]].word.push(words[i+1]);
+            if (!pronouns.includes(words[i+1])) tgt.word.push(words[i+1]);
         }
     }
     return obj;
