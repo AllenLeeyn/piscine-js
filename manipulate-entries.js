@@ -20,8 +20,11 @@ const reduceEntries = (obj, fn, acc) => {
     return acc;
 };
 
+const toOnePrecision = (num) => {
+    return num % 1 === 0 ? num : parseFloat(num.toFixed(1));
+};
 const totalCalories = (obj) => reduceEntries(obj, (acc = 0, [key, val]) => {
-    return acc+(val/100 * nutritionDB[key].calories);
+    return toOnePrecision(acc+(val/100 * nutritionDB[key].calories));
 });
 
 const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
@@ -29,9 +32,6 @@ const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
 });
 
 const cartTotal = (obj) => mapEntries(obj, ([key, val]) => {
-    const toOnePrecision = (num) => {
-        return num % 1 === 0 ? num : parseFloat(num.toFixed(1));
-    };
 
     return [key, {
         calories: toOnePrecision((val/100) * nutritionDB[key].calories),
