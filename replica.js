@@ -1,7 +1,7 @@
 const replica = (tgt, ...objs) => {
 
     objs.forEach(obj => {
-        if (obj instanceof RegExp) return tgt.push(new RegExp(obj.source, obj.flags));
+        if (obj instanceof RegExp) return new RegExp(obj.source, obj.flags);
 
         if (typeof obj === 'object'){
             for (const [key, val] of Object.entries(obj)){
