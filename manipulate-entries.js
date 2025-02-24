@@ -21,14 +21,15 @@ const reduceEntries = (obj, fn, acc) => {
 };
 
 const calcValue = (val, num) => {
-    const str = num.toString();
+    const str = val.toString();
     const match = str.match(/(?:\.\d*)/);
     const precision = match ? match[0].length - 1 : 1;
     num = (val/100) * num;
     return num % 1 === 0 ? num : parseFloat(num.toFixed(precision));
 };
+
 const totalCalories = (obj) => reduceEntries(obj, (acc = 0, [key, val]) => {
-    return acc+calcValue(val, nutritionDB[key].calories);
+    return acc + calcValue(val, nutritionDB[key].calories);
 });
 
 const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
