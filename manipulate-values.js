@@ -14,10 +14,10 @@ const mapValues = (obj, fn) => {
     return Object.fromEntries(objArr);
 };
 
-const reduceValues = (obj, fn) => {
-    let result = 0;
+const reduceValues = (obj, fn, acc) => {
+    acc = (acc === undefined) ? 0 : acc;
     for (const [key, value] of  Object.entries(obj)) {
-        result = fn(result, value)
+        acc = fn(acc, value)
     };
-    return result;
+    return acc;
 };
