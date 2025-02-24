@@ -29,12 +29,16 @@ const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
 });
 
 const cartTotal = (obj) => mapEntries(obj, ([key, val]) => {
+    const toOnePrecision = (num) => {
+        return num % 1 === 0 ? num : parseFloat(num.toFixed(1));
+    };
+
     return [key, {
-        calories: (val/100) * nutritionDB[key].calories,
-        protein: (val/100) * nutritionDB[key].protein,
-        carbs: (val/100) * nutritionDB[key].carbs,
-        sugar: (val/100) * nutritionDB[key].sugar,
-        fiber: (val/100) * nutritionDB[key].fiber,
-        fat: (val/100) * nutritionDB[key].fat,
+        calories: toOnePrecision((val/100) * nutritionDB[key].calories),
+        protein: toOnePrecision((val/100) * nutritionDB[key].protein),
+        carbs: toOnePrecision((val/100) * nutritionDB[key].carbs),
+        sugar: toOnePrecision((val/100) * nutritionDB[key].sugar),
+        fiber: toOnePrecision((val/100) * nutritionDB[key].fiber),
+        fat: toOnePrecision((val/100) * nutritionDB[key].fat),
     }]
 });
