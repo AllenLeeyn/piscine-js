@@ -20,11 +20,15 @@ const reduceEntries = (obj, fn, acc) => {
     return acc;
 };
 
-const toOnePrecision = (num) => {
-    return num % 1 === 0 ? num : parseFloat(num.toFixed(1));
+const calcValue = (val, num) => {
+    const str = num.toString();
+    const match = str.match(/(?:\.\d*)/);
+    const precision = match ? match[0].length - 1 : 1;
+    num = (val/100) * num;
+    return num % 1 === 0 ? num : parseFloat(num.toFixed(precision));
 };
 const totalCalories = (obj) => reduceEntries(obj, (acc = 0, [key, val]) => {
-    return toOnePrecision(acc+(val/100 * nutritionDB[key].calories));
+    return acc+calcValue(val, nutritionDB[key].calories);
 });
 
 const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
@@ -34,11 +38,11 @@ const lowCarbs = (obj) => filterEntries(obj, ([key, val]) => {
 const cartTotal = (obj) => mapEntries(obj, ([key, val]) => {
 
     return [key, {
-        calories: toOnePrecision((val/100) * nutritionDB[key].calories),
-        protein: toOnePrecision((val/100) * nutritionDB[key].protein),
-        carbs: toOnePrecision((val/100) * nutritionDB[key].carbs),
-        sugar: toOnePrecision((val/100) * nutritionDB[key].sugar),
-        fiber: toOnePrecision((val/100) * nutritionDB[key].fiber),
-        fat: toOnePrecision((val/100) * nutritionDB[key].fat),
+        calories: calcValue(val, nutritionDB[key].calories),
+        protein: calcValue(val, nutritionDB[key].protein),
+        carbs: calcValue(val, nutritionDB[key].carbs),
+        sugar: calcValue(val, nutritionDB[key].sugar),
+        fiber: calcValue(val, nutritionDB[key].fiber),
+        fat: calcValue(val, nutritionDB[key].fat),
     }]
 });
