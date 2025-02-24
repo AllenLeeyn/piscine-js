@@ -6,14 +6,13 @@ const pronoun = (str) => {
 
     for (let i = 0; i < words.length; i++) {
         let word = words[i].toLowerCase();
-        let tgt = obj[word]
         if (pronouns.includes(word)){
-            if (!tgt){
-                tgt = { word :[], count: 1};
+            if (!obj[word]){
+                obj[word] = { word :[], count: 1};
             } else {
-                tgt.count++;
+                obj[word].count++;
             }
-            if (!pronouns.includes(words[i+1])) tgt.word.push(words[i+1]);
+            if (!pronouns.includes(words[i+1])) obj[word].word.push(words[i+1]);
         }
     }
     return obj;
