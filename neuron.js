@@ -18,10 +18,17 @@ const neuron = (arr) => {
         if (obj[promptType][qKey]) {
             curResponse = obj[promptType][qKey].responses;
         };
-        obj[promptType][qKey] = {
-            question: qVal,
-            responses: [...curResponse,rVal]
-        };
+        if (promptType === 'questions'){
+            obj[promptType][qKey] = {
+                question: qVal,
+                responses: [...curResponse,rVal]
+            };
+        } else {
+            obj[promptType][qKey] = {
+                order: qVal,
+                responses: [...curResponse,rVal]
+            };
+        }
         
     });
     return obj;
