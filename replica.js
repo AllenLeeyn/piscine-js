@@ -1,12 +1,14 @@
 const replica = (tgt, ...objs) => {
 
     objs.forEach(obj => {
-        if (obj instanceof RegExp) return new RegExp(obj.source, obj.flags);
-
         if (typeof obj === 'object'){
             for (const [key, val] of Object.entries(obj)){
                 if (typeof val === 'object') {
-                    tgt[key] = replica(tgt[key], val);
+                    if (val instanceof RegExp) {
+                        tgt[key] = new RegExp(val.source, val.flags)
+                    } else {
+                        tgt[key] = replica(tgt[key], val);
+                    };
                 } else {
                     tgt[key] = val;
                 }
@@ -16,3 +18,5 @@ const replica = (tgt, ...objs) => {
     });
     return tgt;
 };
+
+console.log(replica({ con: console.log }, { reg: /hello/ }))
