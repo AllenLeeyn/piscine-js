@@ -2,7 +2,7 @@ const pick = (obj, strArr) => {
     if (typeof strArr === 'string') strArr = [strArr];
     const objArr = [];
     for (const [key, value] of  Object.entries(obj)){
-        (strArr.includes(key)) ? objArr.push([key, value]):null;
+        if (strArr.includes(key)) objArr.push([key, value]);
     };
     return Object.fromEntries(objArr);
 };
