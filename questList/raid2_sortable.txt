@@ -1,0 +1,60 @@
+"sortable": {
+    "id": 100477,
+    "name": "sortable",
+    "type": "raid",
+    "attrs": {
+        "campus": "gritlab",
+        "capacity": 400,
+        "eventDuration": 3120,
+        "groupSize": 3,
+        "registrationDuration": 2160,
+        "subject": "/markdown/root/public/subjects/sortable/README.md",
+        "validations": [
+            {
+                "type": "admin_audit",
+                "delay": 0,
+                "required": 1,
+                "ratio": 1,
+                "matchWhere": {
+                    "_or": [
+                        {
+                            "private": {
+                                "roles": {
+                                    "slug": {
+                                        "_eq": "campus_admin_gritlab"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": {
+                                "_eq": 1
+                            }
+                        }
+                    ]
+                },
+                "form": "/markdown/root/public/subjects/sortable/audit/README.md"
+            }
+        ],
+        "baseXp": 2150,
+        "category": "required",
+        "difficulty": 1,
+        "duration": 2,
+        "level": 12,
+        "parentType": "piscine",
+        "rewards": {
+            "xp": 2150
+        },
+        "rootName": "piscine-js",
+        "rootPath": "/gritlab/school-curriculum/piscine-js",
+        "startAfter": 16920,
+        "startDay": 13,
+        "week": 2,
+        "xpIndex": 62.75,
+        "eventStartDelay": 300,
+        "info": "Group 2"
+    },
+    "key": "sortable",
+    "path": "/gritlab/school-curriculum/piscine-js/sortable",
+    "index": 7
+},

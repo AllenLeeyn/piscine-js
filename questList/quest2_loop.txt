@@ -1,0 +1,585 @@
+"loop": {
+    "id": 100426,
+    "name": "loop",
+    "type": "quest",
+    "attrs": {
+        "campus": "gritlab",
+        "expectedXp": 19300,
+        "delay": 172800000,
+        "difficulty": 14,
+        "duration": 2,
+        "level": 8,
+        "parentType": "piscine",
+        "rootPath": "/gritlab/school-curriculum/piscine-js",
+        "startDay": 3,
+        "week": 1,
+        "xpIndex": 14.75,
+        "scopeExtraDuration": 1
+    },
+    "children": {
+        "repeat": {
+            "id": 100433,
+            "name": "repeat",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/repeat/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1250,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 6,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 14.75,
+                "language": "js",
+                "expectedFiles": [
+                    "repeat.js"
+                ]
+            },
+            "key": "repeat",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/repeat",
+            "index": 1
+        },
+        "elementary": {
+            "id": 100427,
+            "name": "elementary",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/elementary/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1250,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 6,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 15.75,
+                "language": "js",
+                "expectedFiles": [
+                    "elementary.js"
+                ]
+            },
+            "key": "elementary",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/elementary",
+            "index": 2
+        },
+        "index-of": {
+            "id": 100428,
+            "name": "index-of",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/index-of/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1250,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 6,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 16.75,
+                "language": "js",
+                "expectedFiles": [
+                    "index-of.js"
+                ]
+            },
+            "key": "index-of",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/index-of",
+            "index": 3
+        },
+        "slicer": {
+            "id": 100429,
+            "name": "slicer",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/slicer/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1250,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 6,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 17.75,
+                "language": "js",
+                "expectedFiles": [
+                    "slicer.js"
+                ]
+            },
+            "key": "slicer",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/slicer",
+            "index": 4
+        },
+        "keep-cut": {
+            "id": 100434,
+            "name": "keep-cut",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/keep-cut/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1250,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 6,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 18.75,
+                "language": "js",
+                "expectedFiles": [
+                    "keep-cut.js"
+                ]
+            },
+            "key": "keep-cut",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/keep-cut",
+            "index": 5
+        },
+        "cut-corners": {
+            "id": 100435,
+            "name": "cut-corners",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/cut-corners/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1400,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 7,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 19.75,
+                "language": "js",
+                "expectedFiles": [
+                    "cut-corners.js"
+                ]
+            },
+            "key": "cut-corners",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/cut-corners",
+            "index": 6
+        },
+        "reverser": {
+            "id": 100436,
+            "name": "reverser",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/reverser/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1400,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 7,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 20.75,
+                "language": "js",
+                "expectedFiles": [
+                    "reverser.js"
+                ]
+            },
+            "key": "reverser",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/reverser",
+            "index": 7
+        },
+        "unbreakable": {
+            "id": 100437,
+            "name": "unbreakable",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/unbreakable/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1400,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 7,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 21.75,
+                "language": "js",
+                "expectedFiles": [
+                    "unbreakable.js"
+                ]
+            },
+            "key": "unbreakable",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/unbreakable",
+            "index": 8
+        },
+        "chunky": {
+            "id": 100430,
+            "name": "chunky",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/chunky/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1400,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 7,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 22.75,
+                "language": "js",
+                "expectedFiles": [
+                    "chunky.js"
+                ]
+            },
+            "key": "chunky",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/chunky",
+            "index": 9
+        },
+        "nasa": {
+            "id": 100431,
+            "name": "nasa",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/nasa/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1400,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 7,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 23.75,
+                "language": "js",
+                "expectedFiles": [
+                    "nasa.js"
+                ]
+            },
+            "key": "nasa",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/nasa",
+            "index": 10
+        },
+        "molecules-cells": {
+            "id": 100432,
+            "name": "molecules-cells",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/molecules-cells/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1400,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 7,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 24.75,
+                "language": "js",
+                "expectedFiles": [
+                    "molecules-cells.js"
+                ]
+            },
+            "key": "molecules-cells",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/molecules-cells",
+            "index": 11
+        },
+        "get": {
+            "id": 100438,
+            "name": "get",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/get/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1550,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 8,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 25.75,
+                "language": "js",
+                "expectedFiles": [
+                    "get.js"
+                ]
+            },
+            "key": "get",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/get",
+            "index": 12
+        },
+        "triangle": {
+            "id": 100439,
+            "name": "triangle",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/triangle/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1550,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 8,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 26.75,
+                "language": "js",
+                "expectedFiles": [
+                    "triangle.js"
+                ]
+            },
+            "key": "triangle",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/triangle",
+            "index": 13
+        },
+        "pyramid": {
+            "id": 100440,
+            "name": "pyramid",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/pyramid/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1550,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 8,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 27.75,
+                "language": "js",
+                "expectedFiles": [
+                    "pyramid.js"
+                ]
+            },
+            "key": "pyramid",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/pyramid",
+            "index": 14
+        },
+        "flat": {
+            "id": 100441,
+            "name": "flat",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/flat/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1550,
+                "category": "optional",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 8,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 28.75,
+                "language": "js",
+                "expectedFiles": [
+                    "flat.js"
+                ]
+            },
+            "key": "flat",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/flat",
+            "index": 15
+        },
+        "find-expression": {
+            "id": 100442,
+            "name": "find-expression",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/find-expression/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1550,
+                "category": "optional",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 8,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 29.75,
+                "language": "js",
+                "expectedFiles": [
+                    "find-expression.js"
+                ]
+            },
+            "key": "find-expression",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/find-expression",
+            "index": 16
+        },
+        "sums": {
+            "id": 100443,
+            "name": "sums",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/sums/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 1550,
+                "category": "optional",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 8,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 30.75,
+                "language": "js",
+                "expectedFiles": [
+                    "sums.js"
+                ]
+            },
+            "key": "sums",
+            "path": "/gritlab/school-curriculum/piscine-js/loop/sums",
+            "index": 17
+        }
+    },
+    "key": "loop",
+    "path": "/gritlab/school-curriculum/piscine-js/loop",
+    "index": 1
+},

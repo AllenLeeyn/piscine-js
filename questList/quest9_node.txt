@@ -1,0 +1,430 @@
+"node": {
+    "id": 102180,
+    "name": "node",
+    "type": "quest",
+    "attrs": {
+        "campus": "gritlab",
+        "expectedXp": 26000,
+        "delay": 1814400000,
+        "difficulty": 10,
+        "duration": 1,
+        "level": 15,
+        "parentType": "piscine",
+        "rootPath": "/gritlab/school-curriculum/piscine-js",
+        "startDay": 22,
+        "week": 4,
+        "xpIndex": 83.75,
+        "videos": "https://www.youtube.com/playlist?list=PLHyAJ_GrRtf8xk2lYyryPRvl4yE5AxZn6",
+        "scopeExtraDuration": 1
+    },
+    "children": {
+        "verydisco": {
+            "id": 102181,
+            "name": "verydisco",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/verydisco/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 83.75,
+                "language": "js",
+                "displayedName": "Verydisco 🕺",
+                "expectedFiles": [
+                    "verydisco.mjs"
+                ]
+            },
+            "key": "verydisco",
+            "path": "/gritlab/school-curriculum/piscine-js/node/verydisco",
+            "index": 0
+        },
+        "verydisco-forever": {
+            "id": 102182,
+            "name": "verydisco-forever",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/verydisco-forever/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 84.75,
+                "language": "js",
+                "displayedName": "Verydisco Forever ♾️",
+                "expectedFiles": [
+                    "verydisco-forever.mjs"
+                ]
+            },
+            "key": "verydisco-forever",
+            "path": "/gritlab/school-curriculum/piscine-js/node/verydisco-forever",
+            "index": 1
+        },
+        "verydisco-reverso": {
+            "id": 102183,
+            "name": "verydisco-reverso",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/verydisco-reverso/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 85.75,
+                "language": "js",
+                "displayedName": "Verydisco Reverso 🔁",
+                "expectedFiles": [
+                    "verydisco-reverso.mjs"
+                ]
+            },
+            "key": "verydisco-reverso",
+            "path": "/gritlab/school-curriculum/piscine-js/node/verydisco-reverso",
+            "index": 2
+        },
+        "tell-me-how-many": {
+            "id": 102184,
+            "name": "tell-me-how-many",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/tell-me-how-many/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 86.75,
+                "language": "js",
+                "displayedName": "Tell Me How Many #️",
+                "expectedFiles": [
+                    "tell-me-how-many.mjs"
+                ]
+            },
+            "key": "tell-me-how-many",
+            "path": "/gritlab/school-curriculum/piscine-js/node/tell-me-how-many",
+            "index": 3
+        },
+        "tell-me-who": {
+            "id": 102185,
+            "name": "tell-me-who",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/tell-me-who/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 87.75,
+                "language": "js",
+                "displayedName": "Tell Me Who ✍️",
+                "expectedFiles": [
+                    "tell-me-who.mjs"
+                ]
+            },
+            "key": "tell-me-who",
+            "path": "/gritlab/school-curriculum/piscine-js/node/tell-me-who",
+            "index": 4
+        },
+        "tell-me-vip": {
+            "id": 102186,
+            "name": "tell-me-vip",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/tell-me-vip/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 88.75,
+                "language": "js",
+                "displayedName": "Tell Me Vip 👍",
+                "expectedFiles": [
+                    "tell-me-vip.mjs"
+                ]
+            },
+            "key": "tell-me-vip",
+            "path": "/gritlab/school-curriculum/piscine-js/node/tell-me-vip",
+            "index": 5
+        },
+        "tell-it-cypher": {
+            "id": 102187,
+            "name": "tell-it-cypher",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/tell-it-cypher/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 89.75,
+                "language": "js",
+                "displayedName": "Tell It Cypher 🔒",
+                "expectedFiles": [
+                    "tell-it-cypher.mjs"
+                ]
+            },
+            "key": "tell-it-cypher",
+            "path": "/gritlab/school-curriculum/piscine-js/node/tell-it-cypher",
+            "index": 6
+        },
+        "friend-support": {
+            "id": 102190,
+            "name": "friend-support",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/friend-support/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 90.75,
+                "language": "js",
+                "expectedFiles": [
+                    "friend-support.mjs"
+                ]
+            },
+            "key": "friend-support",
+            "path": "/gritlab/school-curriculum/piscine-js/node/friend-support",
+            "index": 7
+        },
+        "uninvited": {
+            "id": 102191,
+            "name": "uninvited",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/uninvited/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 91.75,
+                "language": "js",
+                "expectedFiles": [
+                    "uninvited.mjs"
+                ]
+            },
+            "key": "uninvited",
+            "path": "/gritlab/school-curriculum/piscine-js/node/uninvited",
+            "index": 8
+        },
+        "gatecrashers": {
+            "id": 102192,
+            "name": "gatecrashers",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/gatecrashers/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 180000
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "required",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 92.75,
+                "language": "js",
+                "expectedFiles": [
+                    "gatecrashers.mjs"
+                ]
+            },
+            "key": "gatecrashers",
+            "path": "/gritlab/school-curriculum/piscine-js/node/gatecrashers",
+            "index": 9
+        },
+        "personal-shopper": {
+            "id": 102188,
+            "name": "personal-shopper",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/personal-shopper/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2600,
+                "category": "optional",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 15,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 93.75,
+                "language": "js",
+                "displayedName": "🌟 Personal Shopper 🛍️",
+                "expectedFiles": [
+                    "personal-shopper.mjs"
+                ]
+            },
+            "key": "personal-shopper",
+            "path": "/gritlab/school-curriculum/piscine-js/node/personal-shopper",
+            "index": 10
+        },
+        "happiness-manager": {
+            "id": 102189,
+            "name": "happiness-manager",
+            "type": "exercise",
+            "attrs": {
+                "campus": "gritlab",
+                "subject": "/markdown/root/public/subjects/happiness-manager/README.md",
+                "validations": [
+                    {
+                        "type": "tester",
+                        "testImage": "ghcr.io/01-edu/test-js",
+                        "cooldown": 0
+                    }
+                ],
+                "baseXp": 2750,
+                "category": "optional",
+                "delay": 0,
+                "difficulty": 1,
+                "duration": 0,
+                "level": 16,
+                "parentType": "quest",
+                "rootName": "piscine-js",
+                "rootPath": "/gritlab/school-curriculum/piscine-js",
+                "xpIndex": 94.75,
+                "language": "js",
+                "displayedName": "🌟 Happiness Manager 😊",
+                "expectedFiles": [
+                    "happiness-manager.mjs"
+                ]
+            },
+            "key": "happiness-manager",
+            "path": "/gritlab/school-curriculum/piscine-js/node/happiness-manager",
+            "index": 11
+        }
+    },
+    "key": "node",
+    "path": "/gritlab/school-curriculum/piscine-js/node",
+    "index": 11
+}
