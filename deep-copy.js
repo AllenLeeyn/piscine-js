@@ -1,4 +1,6 @@
 const deepCopy = (obj) => {
+    if (obj instanceof RegExp) return new RegExp(obj.source, obj.flags);
+    
     const objArr = [];
     if (Array.isArray(obj)){
         for (const val of obj){
