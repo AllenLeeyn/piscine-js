@@ -2,7 +2,7 @@ const pronouns = ['i', 'you', 'he', 'she', 'it', 'they', 'we'];
 
 const pronoun = (str) => {
     const obj = {};
-    const words = str.split(/\s+/);
+    const words = str.split(/[\s\p{P}]+/);
 
     for (let i = 0; i < words.length; i++) {
         let word = words[i].toLowerCase();
