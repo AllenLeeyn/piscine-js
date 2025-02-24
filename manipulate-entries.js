@@ -22,12 +22,12 @@ const reduceEntries = (obj, fn, acc) => {
 
 const formatNumber = (num) => {
     let numStr = num.toString();
-    const zeroRegex = /(?!(\.(\d+)?))(0){3,}1$/;
+    const zeroRegex = /(?!(\.(\d+)?))(0){3,}\d$/;
     const zerosStr = numStr.match(zeroRegex);
     if (zerosStr){
         numStr = numStr.replace(zerosStr[0], '');
     };
-    const nineRegex = /(?!(\.(\d+)?))(9){3,}9$/;
+    const nineRegex = /(?!(\.(\d+)?))(9){3,}\d$/;
     const nineStr = numStr.match(nineRegex);
     if (nineStr){
         numStr = numStr.replace(nineStr[0], '');
