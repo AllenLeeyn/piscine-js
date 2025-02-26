@@ -11,7 +11,7 @@ function opThrottle(func, wait, { leading = false, trailing = true } = {}) {
         if (timeSinceLastCall > wait) {
             if (timeoutID) {
                 clearTimeout(timeoutID);
-                timer = null;
+                timeoutID = null;
             }
             func(...args);
             lastCallTime = now;
