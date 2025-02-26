@@ -29,18 +29,17 @@ const throttle = (func, wait = 0) => {
     let timeout;
     let trailingCall = false;
 
-    return (...args) => {
+    return () => {
         const now = Date.now();
-        const timeSinceLastCall = now - lastCallTime;
-        if (timeSinceLastCall > wait){
-            func(...args);
+        if (now - lastCallTime > wait){
+            func.apply(this, arguments);
             lastCallTime = now;
         } else if (!trailingCall){
             trailingCall = true;
             clearTimeout(timeout);
             timeout = setTimeout(() => {
-                func(...args);
-                lastCallTime = now;
+                func.apply(this, arguments);
+                lastCallTime = Date.now();
             }, wait - timeSinceLastCall);
         };
     };
