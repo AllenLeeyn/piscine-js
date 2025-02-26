@@ -21,6 +21,7 @@ const opThrottle = (func, wait = 0, options = {}) => {
                 lastCallTime = now;
             };
             lastCallTime = now;
+            called = false;
         };
     };
 };
