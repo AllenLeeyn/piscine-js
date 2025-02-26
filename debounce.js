@@ -9,6 +9,7 @@ const debounce = (fn, delay) => {
 const opDebounce = (fn, delay) => {
     let timeout;
     return (...args)=>{
+        if (!timeout) fn(...args);
         clearTimeout(timeout);
         fn(...args)
         timeout = setTimeout(()=>{}, delay);
