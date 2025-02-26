@@ -1,4 +1,4 @@
-const opDebounce = (func, wait = 0, options = {leading: false, trailing: true}) => {
+const debounce = (func, wait = 0, options = {leading: false, trailing: true}) => {
     let timeout;
     let lastCallTime = 0;
     let lastInvokeTime = 0;
