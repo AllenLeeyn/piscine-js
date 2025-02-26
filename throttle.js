@@ -1,37 +1,28 @@
-const opThrottle = (func, wait = 0, options = {}) => {
-    if (typeof func != 'function') {
-      throw new TypeError(FUNC_ERROR_TEXT);
-    }
-    let lastCallTime = 0;
-    let timeout;
-    let called = false;
-    let leading = (options.leading === undefined) ? false : options.leading;
-    let trailing = (options.trailing === undefined) ? true : options.trailing;
 
-    return (...args) => {
-        const now = Date.now();
-        const timeSinceLastCall = now - lastCallTime;
-        if (leading && !called) {
-            func(...args);
-            lastCallTime = now;
-            called = true;
+function opThrottle(fn, delay, { leading = false, trailing = true } = {}) {
+    let last = 0;
+    let timer = null;
+    return function () {
+        const now = +new Date();
+        if (!last && leading === false) {
+            last = now;
         }
-        if (timeSinceLastCall >= wait) {
-            if (trailing && !called){
-                func(...args);
-                lastCallTime = now;
+        if (now - last > delay) {
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
             }
-        } else {
-            clearTimeout(timeout);
-            if (trailing) {
-                timeout = setTimeout(() => {
-                    func(...args);
-                    lastCallTime = Date.now();
-                }, wait - timeSinceLastCall);
-            };
+            fn.apply(this, arguments);
+            last = now;
+        } else if (!timer && trailing !== false) {
+            timer = setTimeout(() => {
+                fn.apply(this, arguments);
+                last = +new Date();
+                timer = null;
+            }, delay);
         }
     };
-};
+}
 
 const throttle = (func, wait = 0) => {
     let lastCallTime = 0;
