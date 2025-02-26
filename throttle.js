@@ -1,58 +1,32 @@
-const debounce = (func, wait = 0, options = {leading: false, trailing: true}) => {
-    let timeout;
+const opThrottle = (func, wait = 0, options = { leading: false, trailing: true }) => {
+    if (typeof func != 'function') {
+      throw new TypeError(FUNC_ERROR_TEXT);
+    }
     let lastCallTime = 0;
-    let lastInvokeTime = 0;
-    const maxing = 'maxWait' in options;
-    let maxWait = maxing ? Number(options.maxWait) : 0;
+    let lastArgs;
+    let lastThis;
+    let timeout;
+    let leading = options.leading || false;
+    let trailing = options.trailing || true;
 
-    function shouldInvoke(now) {
-        const timeSinceLastCall = now - lastCallTime;
-        const timeSinceLastInvoke = now - lastInvokeTime;
-
-        return ((lastCallTime === undefined) || 
-                (timeSinceLastCall>= wait) ||
-                (timeSinceLastCall < 0) || 
-                (maxing && timeSinceLastInvoke >= maxWait))
-    };
-    
-    return (...args)=>{
+    return (...args) => {
         const now = Date.now();
-        if (options.leading && shouldInvoke(now)){
-            func(...args);
-            lastInvokeTime = now;
+        const timeSinceLastCall = now - lastCallTime;
+        if (timeSinceLastCall >= wait) {
+            if (leading) func(...args);
             lastCallTime = now;
-        }
-
-        clearTimeout(timeout);
-
-        if (options.trailing && shouldInvoke(now)) {
-            timeout = setTimeout(()=>{
-                lastInvokeTime = now;
-                func(...args);
-            }, wait);
+        } else {
+            clearTimeout(timeout);
+            if (trailing) {
+                timeout = setTimeout(() => {
+                    func(...args);
+                    lastCallTime = now;
+                }, wait - timeSinceLastCall);
+            };
         };
     };
 };
 
-const throttle = (func, wait = 0) => {
-    if (typeof func != 'function') {
-      throw new TypeError(FUNC_ERROR_TEXT);
-    }
-    return debounce(func, wait, {
-      'maxWait': wait, trailing: true
-    });
+const throttle = (func, wait = 0, options) => {
+    return opThrottle(func, wait, options);
 };
-
-const opThrottle = (func, wait = 0, options) => {
-    if (typeof func != 'function') {
-      throw new TypeError(FUNC_ERROR_TEXT);
-    }
-    if (isObject(options)) {
-      leading = 'leading' in options ? !!options.leading : leading;
-      trailing = 'trailing' in options ? !!options.trailing : trailing;
-    }
-    return debounce(func, wait, {
-      'leading': leading,
-      'maxWait': wait,
-      'trailing': trailing
-    });};
