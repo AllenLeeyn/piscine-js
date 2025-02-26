@@ -3,29 +3,24 @@ const opThrottle = (func, wait = 0, options = {}) => {
       throw new TypeError(FUNC_ERROR_TEXT);
     }
     let lastCallTime = 0;
-    let timeout;
+    let called = false;
     let leading = (options.leading === undefined) ? false : options.leading;
     let trailing = (options.trailing === undefined) ? false : options.trailing;
 
     return (...args) => {
         const now = Date.now();
-        if (!lastCallTime && !leading) lastCallTime = now;
-
         const timeSinceLastCall = now - lastCallTime;
-        if (timeSinceLastCall >= wait) {
-            if (timeout) {
-                clearTimeout(timeout);
-                timeout= null;
-            };
+        if (leading && ! called) {
             func(...args);
-            lastCallTime = now;
-        } else if (!timeout && trailing){
-            timeout = setTimeout(() => {
+            called = true;
+        }
+        if (timeSinceLastCall >= wait) {
+            if (trailing) {
                 func(...args);
-                lastCallTime = now;
-                timeout = null;
-            }, wait);
+                called = true;
+            };
         };
+        lastCallTime = now;
     };
 };
 
@@ -33,9 +28,10 @@ const throttle = (func, wait = 0) => {
     let lastCallTime = 0;
     return (...args) => {
         const now = Date.now();
-        if (now - lastCallTime > wait){
+        const timeSinceLastCall = now - lastCallTime;
+        if (timeSinceLastCall >= wait){
             func(...args);
-            lastCallTime = now;
         };
+        lastCallTime = now;
     };
 };
