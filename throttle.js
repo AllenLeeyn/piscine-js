@@ -29,14 +29,16 @@ const opThrottle = (func, wait = 0, options = {}) => {
 const throttle = (func, wait = 0) => {
     let lastCallTime = 0;
     let timeout;
-    
+    let trailingCall = false;
+
     return (...args) => {
         const now = Date.now();
         const timeSinceLastCall = now - lastCallTime;
         if (timeSinceLastCall > wait){
             func(...args);
             lastCallTime = now;
-        } else {
+        } else if (!trailingCall){
+            trailingCall = true;
             clearTimeout(timeout);
             timeout = setTimeout(() => {
                 func(...args);
