@@ -9,12 +9,12 @@ const debounce = (fn, delay) => {
 const opDebounce = (fn, delay, options = {leading: false, trailing: true}) => {
     let timeout;
     let lastArgs;
-    let lastCallTime;
+    let lastCallTime = 0;
 
     return (...args)=>{
         const now = Date.now();
-        const timeSinceLastCall = now - (lastCallTime || 0);
-        if (options.leading){
+        const timeSinceLastCall = now - lastCallTime;
+        if (options.leading && timeSinceLastCall >= delay){
             fn(...args);
             lastCallTime = now;
         }
@@ -23,11 +23,9 @@ const opDebounce = (fn, delay, options = {leading: false, trailing: true}) => {
 
         if (options.trailing) {
             timeout = setTimeout(()=>{
-                if (timeSinceLastCall >= delay)fn(...args);
+                fn(...args);
             }, delay);
         };
-
         lastArgs = args;
-        lastCallTime = now;
     };
 };
