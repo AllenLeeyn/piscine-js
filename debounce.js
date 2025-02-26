@@ -12,6 +12,8 @@ const opDebounce = (fn, delay) => {
         if (!timeout) fn(...args);
         clearTimeout(timeout);
         fn(...args)
-        timeout = setTimeout(()=>{}, delay);
+        timeout = setTimeout(()=>{
+            timeout = undefined;
+        }, delay);
     };
 };
