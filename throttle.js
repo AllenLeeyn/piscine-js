@@ -9,18 +9,22 @@ const opThrottle = (func, wait = 0, options = {}) => {
 
     return (...args) => {
         const now = Date.now();
+        if (!lastCallTime && !leading) lastCallTime = now;
+
         const timeSinceLastCall = now - lastCallTime;
         if (timeSinceLastCall >= wait) {
-            if (leading) func(...args);
-            lastCallTime = now;
-        } else {
-            clearTimeout(timeout);
-            if (trailing) {
-                timeout = setTimeout(() => {
-                    func(...args);
-                    lastCallTime = now;
-                }, wait - timeSinceLastCall);
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout= null;
             };
+            func(...args);
+            lastCallTime = now;
+        } else if (!timeout && trailing){
+            timeout = setTimeout(() => {
+                func(...args);
+                lastCallTime = now;
+                timer = null;
+            }, wait);
         };
     };
 };
