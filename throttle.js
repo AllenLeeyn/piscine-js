@@ -3,6 +3,7 @@ const opThrottle = (func, wait = 0, options = {}) => {
       throw new TypeError(FUNC_ERROR_TEXT);
     }
     let lastCallTime = 0;
+    let timeout;
     let called = false;
     let leading = (options.leading === undefined) ? false : options.leading;
     let trailing = (options.trailing === undefined) ? true : options.trailing;
@@ -12,16 +13,17 @@ const opThrottle = (func, wait = 0, options = {}) => {
         const timeSinceLastCall = now - lastCallTime;
         if (leading && !called) {
             func(...args);
+            lastCallTime = now;
             called = true;
         }
-        if (timeSinceLastCall > wait) {
-            if (trailing && !called) {
+        if (timeSinceLastCall >= wait) called = false;
+        if (trailing && !called && timeSinceLastCall < wait) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
                 func(...args);
-                called = true;
                 lastCallTime = now;
-            };
-            lastCallTime = now;
-            called = false;
+                called = false;
+            }, wait - timeSinceLastCall);
         };
     };
 };
