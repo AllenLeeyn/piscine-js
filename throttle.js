@@ -18,9 +18,9 @@ const opThrottle = (func, wait = 0, options = {}) => {
             if (trailing) {
                 func(...args);
                 called = true;
+                lastCallTime = now;
             };
         };
-        lastCallTime = now;
     };
 };
 
@@ -31,7 +31,7 @@ const throttle = (func, wait = 0) => {
         const timeSinceLastCall = now - lastCallTime;
         if (timeSinceLastCall >= wait){
             func(...args);
+            lastCallTime = now;
         };
-        lastCallTime = now;
     };
 };
