@@ -19,10 +19,8 @@ const opDebounce = (fn, delay) => {
             lastCallTime = now;
         }
         clearTimeout(timeout);
-        timeout = setTimeout(()=>{
-            fn(...args);
-        }, delay);
-        
+        timeout = setTimeout(()=>{}, delay);
+
         lastArgs = args;
         lastCallTime = now;
     };
