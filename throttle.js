@@ -1,25 +1,26 @@
 
-function opThrottle(fn, delay, { leading = false, trailing = true } = {}) {
-    let last = 0;
-    let timer = null;
-    return function () {
+function opThrottle(func, wait, { leading = false, trailing = true } = {}) {
+    let lastCallTime = 0;
+    let timeoutID = null;
+    return function (...args) {
         const now = Date.now();
-        if (!last && !leading) {
-            last = now;
+        const timeSinceLastCall = now - lastCallTime;
+        if (!lastCallTime && !leading) {
+            lastCallTime = now;
         }
-        if (now - last > delay) {
-            if (timer) {
-                clearTimeout(timer);
+        if (timeSinceLastCall > wait) {
+            if (timeoutID) {
+                clearTimeout(timeoutID);
                 timer = null;
             }
-            fn.apply(this, arguments);
-            last = now;
-        } else if (!timer && trailing) {
-            timer = setTimeout(() => {
-                fn.apply(this, arguments);
-                last = Date.now();
-                timer = null;
-            }, delay);
+            func(...args);
+            lastCallTime = now;
+        } else if (!timeoutID && trailing) {
+            timeoutID = setTimeout(() => {
+                func(...args);
+                lastCallTime = Date.now();
+                timeoutID = null;
+            }, wait);
         }
     };
 }
