@@ -8,12 +8,22 @@ const debounce = (fn, delay) => {
 
 const opDebounce = (fn, delay) => {
     let timeout;
+    let lastArgs;
+    let lastCallTime;
+
     return (...args)=>{
-        if (!timeout) fn(...args);
+        const now = Date.now();
+        const timeSinceLastCall = now - (lastCallTime || 0);
+        if (!lastCallTime || timeSinceLastCall >= delay){
+            fn(...args);
+            lastCallTime = now;
+        }
         clearTimeout(timeout);
-        fn(...args)
         timeout = setTimeout(()=>{
-            timeout = undefined;
+            fn(...args);
         }, delay);
+        
+        lastArgs = args;
+        lastCallTime = now;
     };
 };
