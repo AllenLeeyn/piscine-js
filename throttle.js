@@ -3,8 +3,8 @@ function opThrottle(fn, delay, { leading = false, trailing = true } = {}) {
     let last = 0;
     let timer = null;
     return function () {
-        const now = +new Date();
-        if (!last && leading === false) {
+        const now = Date.now();
+        if (!last && !leading) {
             last = now;
         }
         if (now - last > delay) {
@@ -14,10 +14,10 @@ function opThrottle(fn, delay, { leading = false, trailing = true } = {}) {
             }
             fn.apply(this, arguments);
             last = now;
-        } else if (!timer && trailing !== false) {
+        } else if (!timer && trailing) {
             timer = setTimeout(() => {
                 fn.apply(this, arguments);
-                last = +new Date();
+                last = Date.now();
                 timer = null;
             }, delay);
         }
