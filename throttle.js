@@ -29,6 +29,13 @@ const opThrottle = (func, wait = 0, options = {}) => {
     };
 };
 
-const throttle = (func, wait = 0, options) => {
-    return opThrottle(func, wait, options);
+const throttle = (func, wait = 0) => {
+    let lastCallTime = 0;
+    return (...args) => {
+        const now = Date.now();
+        if (now - lastCallTime > wait){
+            func(...args);
+            lastCallTime = now;
+        };
+    };
 };
