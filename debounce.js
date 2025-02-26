@@ -15,11 +15,12 @@ const opDebounce = (fn, delay) => {
         const now = Date.now();
         const timeSinceLastCall = now - (lastCallTime || 0);
         if (!lastCallTime || timeSinceLastCall >= delay){
-            fn(...args);
             lastCallTime = now;
         }
         clearTimeout(timeout);
-        timeout = setTimeout(()=>{}, delay);
+        timeout = setTimeout(()=>{
+            fn(...args);
+        }, delay);
 
         lastArgs = args;
         lastCallTime = now;
