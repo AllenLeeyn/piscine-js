@@ -1,4 +1,4 @@
-const opThrottle = (func, wait = 0, options = { leading: false, trailing: true }) => {
+const opThrottle = (func, wait = 0, options) => {
     if (typeof func != 'function') {
       throw new TypeError(FUNC_ERROR_TEXT);
     }
@@ -6,8 +6,8 @@ const opThrottle = (func, wait = 0, options = { leading: false, trailing: true }
     let lastArgs;
     let lastThis;
     let timeout;
-    let leading = options.leading || false;
-    let trailing = options.trailing || true;
+    let leading = (options.leading === undefined) ? false : options.leading;
+    let trailing = (options.trailing === undefined) ? false : options.trailing;
 
     return (...args) => {
         const now = Date.now();
