@@ -6,26 +6,38 @@ const debounce = (fn, delay) => {
     };
 };
 
-const opDebounce = (fn, delay, options = {leading: false, trailing: true}) => {
+const opDebounce = (func, wait = 0, options = {leading: false, trailing: true}) => {
     let timeout;
-    let lastArgs;
     let lastCallTime = 0;
+    let lastInvokeTime = 0;
+    const maxing = 'maxWait' in options;
+    let maxWait = maxing ? Number(options.maxWait) : 0;
 
+    function shouldInvoke(now) {
+        const timeSinceLastCall = now - lastCallTime;
+        const timeSinceLastInvoke = now - lastInvokeTime;
+
+        return ((lastCallTime === undefined) || 
+                (timeSinceLastCall>= wait) ||
+                (timeSinceLastCall < 0) || 
+                (maxing && timeSinceLastInvoke >= maxWait))
+    };
+    
     return (...args)=>{
         const now = Date.now();
-        const timeSinceLastCall = now - lastCallTime;
-        if (options.leading && timeSinceLastCall >= delay){
-            fn(...args);
+        if (options.leading && shouldInvoke(now)){
+            func(...args);
+            lastInvokeTime = now;
             lastCallTime = now;
         }
 
         clearTimeout(timeout);
 
-        if (options.trailing) {
+        if (options.trailing && shouldInvoke(now)) {
             timeout = setTimeout(()=>{
-                fn(...args);
-            }, delay);
+                lastInvokeTime = now;
+                func(...args);
+            }, wait);
         };
-        lastArgs = args;
     };
 };
