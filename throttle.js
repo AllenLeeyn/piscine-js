@@ -29,7 +29,7 @@ const throttle = (func, wait = 0) => {
     let timeout;
     let trailingCall = false;
 
-    return () => {
+    return function () {
         const now = Date.now();
         if (now - lastCallTime > wait){
             func.apply(this, arguments);
