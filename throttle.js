@@ -40,7 +40,7 @@ const throttle = (func, wait = 0) => {
             timeout = setTimeout(() => {
                 func.apply(this, arguments);
                 lastCallTime = Date.now();
-            }, wait - timeSinceLastCall);
+            }, wait - now - lastCallTime);
         };
     };
 };
