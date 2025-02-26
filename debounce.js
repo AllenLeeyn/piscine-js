@@ -6,7 +6,7 @@ const debounce = (fn, delay) => {
     };
 };
 
-const opDebounce = (fn, delay) => {
+const opDebounce = (fn, delay, options = {leading: false, trailing: true}) => {
     let timeout;
     let lastArgs;
     let lastCallTime;
@@ -14,13 +14,18 @@ const opDebounce = (fn, delay) => {
     return (...args)=>{
         const now = Date.now();
         const timeSinceLastCall = now - (lastCallTime || 0);
-        if (!lastCallTime || timeSinceLastCall >= delay){
+        if (options.leading){
+            fn(...args);
             lastCallTime = now;
         }
+
         clearTimeout(timeout);
-        timeout = setTimeout(()=>{
-            fn(...args);
-        }, delay);
+
+        if (options.trailing) {
+            timeout = setTimeout(()=>{
+                if (timeSinceLastCall >= delay)fn(...args);
+            }, delay);
+        };
 
         lastArgs = args;
         lastCallTime = now;
