@@ -16,15 +16,20 @@ const opThrottle = (func, wait = 0, options = {}) => {
             lastCallTime = now;
             called = true;
         }
-        if (timeSinceLastCall >= wait) called = false;
-        if (trailing && !called && timeSinceLastCall < wait) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
+        if (timeSinceLastCall >= wait) {
+            if (trailing && !called){
                 func(...args);
                 lastCallTime = now;
-                called = false;
-            }, wait - timeSinceLastCall);
-        };
+            }
+        } else {
+            clearTimeout(timeout);
+            if (trailing) {
+                timeout = setTimeout(() => {
+                    func(...args);
+                    lastCallTime = Date.now();
+                }, wait - timeSinceLastCall);
+            };
+        }
     };
 };
 
