@@ -23,7 +23,7 @@ const opThrottle = (func, wait = 0, options = {}) => {
             timeout = setTimeout(() => {
                 func(...args);
                 lastCallTime = now;
-                timer = null;
+                timeout = null;
             }, wait);
         };
     };
