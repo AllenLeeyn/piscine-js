@@ -4,11 +4,10 @@ function opThrottle(func, wait, { leading = false, trailing = true } = {}) {
     let timeoutID = null;
     return function () {
         const now = Date.now();
-        const timeSinceLastCall = now - lastCallTime;
         if (!lastCallTime && !leading) {
             lastCallTime = now;
         }
-        if (timeSinceLastCall > wait) {
+        if (now - lastCallTime > wait) {
             if (timeoutID) {
                 clearTimeout(timeoutID);
                 timeoutID = null;
