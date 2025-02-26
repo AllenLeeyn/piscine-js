@@ -2,7 +2,7 @@
 function opThrottle(func, wait, { leading = false, trailing = true } = {}) {
     let lastCallTime = 0;
     let timeoutID = null;
-    return function (...args) {
+    return function () {
         const now = Date.now();
         const timeSinceLastCall = now - lastCallTime;
         if (!lastCallTime && !leading) {
@@ -13,11 +13,11 @@ function opThrottle(func, wait, { leading = false, trailing = true } = {}) {
                 clearTimeout(timeoutID);
                 timeoutID = null;
             }
-            func(...args);
+            func.apply(this, arguments);
             lastCallTime = now;
         } else if (!timeoutID && trailing) {
             timeoutID = setTimeout(() => {
-                func(...args);
+                func.apply(this, arguments);
                 lastCallTime = Date.now();
                 timeoutID = null;
             }, wait);
