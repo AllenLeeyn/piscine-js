@@ -14,8 +14,8 @@ async function timeout(delay, callback){
 };
 
 async function queryServers(serverName, q){
-    const url = ()=>`/${serverName}?q=${q}`;
-    const urlBackup = ()=>`/${serverName}_backup?q=${q}`;
+    const url = `/${serverName}?q=${q}`;
+    const urlBackup = `/${serverName}_backup?q=${q}`;
     return await Promise.race([getJSON(url), getJSON(urlBackup)]);
 };
 
