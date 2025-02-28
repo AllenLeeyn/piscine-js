@@ -1,7 +1,7 @@
-function series(funcArr){
+async function series(funcArr){
     const result = [];
-    funcArr.forEach(async(e) => {
-        result.push(await e());
-    });
+    for (const func of funcArr) {
+        result.push(await func());
+    }
     return result;
 };
