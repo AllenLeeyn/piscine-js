@@ -8,17 +8,19 @@ function race(promises){
 };
 
 function some(promises, count){
-    const results = [];
     if (promises.length === 0 || count === 0) return [];
-    let resolvedCount = 0;
 
+    const results = new Array(promises.length);
+    let resolvedCount = 0;
     return new Promise((resolve, reject) => {
-        promises.forEach(promise => {
+        promises.forEach((promise, index) => {
             const p = (promise instanceof Promise) ? promise : Promise.resolve(promise);
 
             p.then(result=>{
-                results.push(result);
-                if (results.length === count) return resolve(results);
+                results[index] = result;
+                resolvedCount++;
+
+                if (resolvedCount === count) return resolve(results.filter(val => val !== undefined));
             }).catch(reject)
         });
     });
