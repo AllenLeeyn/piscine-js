@@ -1,8 +1,6 @@
 async function isWinner(countryName){
-    const winner = await db.getWinner(countryName).catch(()=>{
-        return `${countryName} never was a winner`;
-    });
-    if (winner === undefined) return `${countryName} never was a winner`;
+    const winner = await db.getWinner(countryName).catch(()=>`${countryName} never was a winner`);
+    if (typeof winner === 'string') return `${countryName} never was a winner`;
 
     if (winner.continent !== 'Europe') return `${countryName} is not what we are looking for because of the continent`;
 
