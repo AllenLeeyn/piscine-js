@@ -6,7 +6,9 @@ function all(promises){
         if (remaining === 0) return resolve(results);
 
         for (const [key, val] of Object.entries(promises)){
-            val.then((res)=>{
+            const promise = val instanceof Promise ? val : Promise.resolve(val);
+            
+            promise.then((res)=>{
                 results[key] = res;
                 remaining--;
                 if (remaining === 0) resolve(results);
