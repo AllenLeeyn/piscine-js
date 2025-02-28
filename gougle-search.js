@@ -1,13 +1,32 @@
-async function queryServers(serverName, q){
-    const promise1 = new Promise(()=>`/${serverName}?q=${q}`);
-    const promise2 = new Promise(()=>`/${serverName}_backup?q=${q}`);
-    return Promise.race([promise1, promise2]);
+async function timeout(delay, callback){
+    const promise = new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(new Error('timeout'))
+        }, delay);
+    });
+
+    return async function(...args){
+        return Promise.race([callback(...args), promise]).then(result=>{
+            if (result instanceof Error) throw result;
+            return result;
+        });
+    };
 };
 
-function gougleSearch(q){
-    const webUrl = queryServers('web', q);
-    const imageUrl = queryServers('image', q);
-    const videoUrl = queryServers('video', q);
+async function queryServers(serverName, q){
+    const url = ()=>`/${serverName}?q=${q}`;
+    const urlBackup = ()=>`/${serverName}_backup?q=${q}`;
+    return await Promise.race([getJSON(url), getJSON(urlBackup)]);
+};
 
-    return {web: getJSON(webUrl), image: getJSON(imageUrl), video: getJSON(videoUrl)};
+async function gougleSearch(q){
+    const obj = {};
+    obj.web = timeout(80, queryServers('web', q));
+    obj.image = timeout(80, queryServers('image', q));
+    obj.video = await timeout(80, queryServers('video', q));
+
+    for (const [key, val] of Object.entries(obj)){
+        if (val instanceof Error) throw val;
+    }
+    return obj;
 };
