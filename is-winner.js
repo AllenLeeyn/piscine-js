@@ -1,13 +1,12 @@
 function isWinner(countryName){
-    const winner = db.getWinner(countryName).catch(()=>{
+    const winner = await db.getWinner(countryName).catch(()=>{
         return `${countryName} never was a winner`;
     });
     if (winner === undefined) return `${countryName} never was a winner`;
-    console.log(winner)
 
-    if (winner.continent !== 'Europe') return `${countryName} is not what we are looking for because of the continent`;
+    if (winner.continent !== 'Europe') return `${countryName} is not what we are looking for because of the continent ${winner.continent}`;
 
-    const result = db.getResults(winner.id)
+    const result = await db.getResults(winner.id)
     if (result.lenght < 3) return `${countryName} is not what we are looking for because of the number of times it was champion`;
 
     let resultYear = [];
