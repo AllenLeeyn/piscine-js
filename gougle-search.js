@@ -21,9 +21,9 @@ async function queryServers(serverName, q){
 
 async function gougleSearch(q){
     const obj = {};
-    obj.web = timeout(80, queryServers('web', q));
-    obj.image = timeout(80, queryServers('image', q));
-    obj.video = await timeout(80, queryServers('video', q));
+    obj.web = await timeout(80, queryServers('web', q))();
+    obj.image = await timeout(80, queryServers('image', q))();
+    obj.video = await timeout(80, queryServers('video', q))();
 
     for (const [key, val] of Object.entries(obj)){
         if (val instanceof Error) throw val;
