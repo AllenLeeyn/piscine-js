@@ -3,6 +3,7 @@ function isWinner(countryName){
         return `${countryName} never was a winner`;
     });
     if (winner === undefined) return `${countryName} never was a winner`;
+    console.log(winner)
 
     if (winner.continent !== 'Europe') return `${countryName} is not what we are looking for because of the continent`;
 
