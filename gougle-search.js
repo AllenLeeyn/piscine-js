@@ -1,4 +1,4 @@
-async function timeout(delay, callback){
+function timeout(delay, callback){
     const promise = new Promise((resolve)=>{
         setTimeout(()=>{
             resolve(new Error('timeout'))
