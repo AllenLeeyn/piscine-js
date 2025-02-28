@@ -13,6 +13,7 @@ function getJSON(path, params){
             })
             .catch((error) => {throw error})
             .then((json) => {
-                return{data: json, error: errorMsg}
+                if (json.error !== undefined) return json.error;
+                return json.data;
             });
     };
