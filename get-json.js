@@ -8,7 +8,7 @@ function getJSON(path, params){
                 return response.json();
             })
             .then((json) => {
-                if (json.error !== undefined) return json.error;
+                if (json.error !== undefined) throw new Error(json.error);
                 return json.data;
             })
     };
