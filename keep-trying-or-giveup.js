@@ -19,8 +19,8 @@ function timeout(delay, callback){
 
     return async function(...args){
         return Promise.race([callback(...args), promise]).then(result=>{
-            if (result instanceof Error) throw value;
-            return value;
+            if (result instanceof Error) throw result;
+            return result;
         });
     };
 };
