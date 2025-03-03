@@ -33,11 +33,12 @@ const postMethod = async (req, res) => {
         body += chunk;
     });
 
+    const fileName = req.url.slice(1);
     req.on('end', async () => {
         try {
             body = JSON.stringify(JSON.parse(body));
             const data = new Uint8Array(Buffer.from(body));
-            const promise = fs.writeFile(`guests${req.url}.json`, data);
+            const promise = fs.writeFile(`guests/${fileName}.json`, data);
             await promise;
         } catch (error) {
             resCode = 500;
