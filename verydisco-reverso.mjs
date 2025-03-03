@@ -11,9 +11,8 @@ async function logFile(arg) {
   }
 }
 let words = await logFile(arg);
-
 const disco = word => {
-    const sliceLen = Math.round(word.length/2);
+    const sliceLen = Math.floor(word.length/2);
     const part1 = word.slice(0,sliceLen);
     const part2 = word.slice(sliceLen, word.length);
     return `${part2}${part1}`;
