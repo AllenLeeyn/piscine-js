@@ -73,14 +73,14 @@ if (keyword === 'rm') {
     };
 };
 
-if (FILENAME === 'help' || FILENAME === undefined) {
+if (FILENAME === 'help' || keyword === 'help' || FILENAME === undefined) {
     console.log('Commands');
-    console.log('- <filename.json> create: takes a filename as argument and create it');
-    console.log('- <filename.json> delete: takes a filename as argument and delete it');
+    console.log('- <filename.json> create : takes a filename as argument and create it');
+    console.log('- <filename.json> delete : takes a filename as argument and delete it');
     console.log('- <filename.json> add <item> || <quantity>: increase the quantity of an item. Negative number will treated as rm');
     console.log('- <filename.json> rm <item> || <quantity>: decrease the quantity of an item. Negative number will treated as add');
     console.log('- <filename.json> ls: list the items and quantities in the list');
-    console.log('- help: list the commands and it usage');
+    console.log('- help : list the commands and it usage');
 } else if (keyword === 'ls' || keyword === undefined) {
     const list = await fs.readFile(FILENAME, 'utf8');
     const listObj = JSON.parse(list);
