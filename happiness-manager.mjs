@@ -117,7 +117,7 @@ const main = async () => {
         const guestList = await readDir(DIRECTORY);
         const vipList = await getVipGuests(guestList);
         if (vipList.length === 0) {
-            return console.log('No one is coming')
+            return console.log('No one is coming.')
         } else {
             newList.potatoes = vipList.length;
             vipList.forEach(updateList);
