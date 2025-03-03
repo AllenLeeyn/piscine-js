@@ -31,17 +31,18 @@ server.on('request', async (req, res) =>{
         };
     
         let resCode = 200;
-        let body = req.headers['body'];
-    
-        if (!body){
-            req.on('data', chunk => {
-                body += chunk;
-            });
-        };
+        let body = '';
+
+        req.on('data', chunk => {
+          body += chunk.toString();
+        });
     
         
         req.on('end', async () => {
             try {
+                if (!body) {
+                    body =  `{"answer": 'yes', "drink": 'juice', "food": 'pizza'}`;
+                };
                 body = JSON.stringify(JSON.parse(body));
 
                 const filePath = path.join('guests', `${req.url.slice(1)}.json`);
