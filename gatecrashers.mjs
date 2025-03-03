@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 const server = http.createServer();
+const BASE_DIR = process.env.TEST_TMP_PATH || process.cwd();
 
 const bestFriends = [
     'Caleb_Squires:abracadabra', 
@@ -16,20 +17,20 @@ const isBestFriends = (req) => {
     if (!authHeader) return false;
 
     const base64Credentials = authHeader.split(' ')[1];
-    const credentials = Buffer.from(base64Credentials, 'base64').toString('utf8');
+    const credentials = Buffer.from(base64Credentials, 'base64').toString();
     if (!bestFriends.includes(credentials)) return false;
 
     return true;
 }
 
 server.on('request', async (req, res) =>{
+    if (!isBestFriends(req)){
+        res.writeHead(401, { 'Content-Type': 'application/json' });
+        res.end('Authorization Required');
+        return;
+    };
+
     if (req.method === 'POST') {
-        if (!isBestFriends(req)){
-            res.writeHead(401, { 'Content-Type': 'application/json' });
-            res.end('Authorization Required');
-            return;
-        };
-    
         let resCode = 200;
         let body = '';
 
@@ -37,15 +38,19 @@ server.on('request', async (req, res) =>{
           body += chunk.toString();
         });
     
-        
         req.on('end', async () => {
             try {
                 if (!body) {
-                    body =  `{"answer": 'yes', "drink": 'juice', "food": 'pizza'}`;
+                    body =  {
+                        answer: 'yes',
+                        drink: 'juice',
+                        food: 'pizza',
+                      }
                 };
-                body = JSON.stringify(JSON.parse(body));
 
-                const filePath = path.join('guests', `${req.url.slice(1)}.json`);
+                body = JSON.stringify(body);
+
+                const filePath = path.join(BASE_DIR, 'guests', `${req.url.slice(1)}.json`);
                 const data = new Uint8Array(Buffer.from(body));
                 
                 await fs.writeFile(filePath, data);
