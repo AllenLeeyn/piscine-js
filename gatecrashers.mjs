@@ -41,10 +41,10 @@ const postMethod = async (req, res) => {
         try {
             body = JSON.stringify(JSON.parse(body));
             const filePath = path.join(__dirname, 'guests', `${req.url}.json`);
-
             const data = new Uint8Array(Buffer.from(body));
-            const promise = fs.writeFile(filePath, data);
-            await promise;
+            
+            await fs.mkdir(path.dirname(filePath), { recursive: true });
+            await fs.writeFile(filePath, data);
         } catch (error) {
             resCode = 500;
             body = JSON.stringify({ error: 'server failed'});
