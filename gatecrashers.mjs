@@ -37,6 +37,9 @@ const postMethod = async (req, res) => {
     req.on('end', async () => {
         try {
             body = JSON.stringify(JSON.parse(body));
+            const guestsDir = path.join(__dirname, 'guests');
+            await fs.mkdir(guestsDir, { recursive: true });
+            
             const data = new Uint8Array(Buffer.from(body));
             const promise = fs.writeFile(`guests/${fileName}.json`, data);
             await promise;
