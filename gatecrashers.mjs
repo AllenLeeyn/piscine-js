@@ -25,7 +25,7 @@ const postMethod = async (req, res) => {
         return;
     };
 
-    let resCode = 200;
+    let resCode = 201;
     let body = '';
 
     req.on('data', chunk => {
