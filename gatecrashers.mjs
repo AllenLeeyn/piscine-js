@@ -27,6 +27,8 @@ const postMethod = async (req, res) => {
     if (!isBestFriends(req)){
         res.writeHead(401, { 'Content-Type': 'application/json' });
         res.end('Authorization Required');
+
+        throw new Error('hehre');
         return;
     };
 
@@ -45,8 +47,6 @@ const postMethod = async (req, res) => {
 
             await fs.mkdir(path.dirname(filePath), { recursive: true });
             await fs.writeFile(filePath, data);
-
-            await new Promise(resolve => setTimeout(resolve, 3000));
 
             res.writeHead(resCode, { 'Content-Type': 'application/json'});
             res.end(body);
