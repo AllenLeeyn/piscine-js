@@ -23,7 +23,7 @@ const isBestFriends = (req) => {
     return true;
 }
 
-const postMethod = (req, res) => {
+const postMethod = async (req, res) => {
     if (!isBestFriends(req)){
         res.writeHead(401, { 'Content-Type': 'application/json' });
         res.end('Authorization Required');
@@ -37,14 +37,16 @@ const postMethod = (req, res) => {
         body += chunk;
     });
 
-    req.on('end', () => {
+    req.on('end', async () => {
         try {
             body = JSON.stringify(JSON.parse(body));
             const filePath = path.join(__dirname, 'guests', `${req.url}.json`);
             const data = new Uint8Array(Buffer.from(body));
 
-            fs.mkdir(path.dirname(filePath), { recursive: true });
-            fs.writeFile(filePath, data);
+            await fs.mkdir(path.dirname(filePath), { recursive: true });
+            await fs.writeFile(filePath, data);
+
+            await new Promise(resolve => setTimeout(resolve, 3000));
 
             res.writeHead(resCode, { 'Content-Type': 'application/json'});
             res.end(body);
@@ -60,7 +62,7 @@ const postMethod = (req, res) => {
 
 server.on('request', async (req, res) =>{
     if (req.method === 'POST') {
-        postMethod(req, res);
+        await postMethod(req, res);
     };
 });
 
