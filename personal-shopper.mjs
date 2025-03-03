@@ -88,6 +88,8 @@ if (keyword === 'ls' || keyword === undefined) {
     const listObj = JSON.parse(list);
 
     for (const [k, v] of Object.entries(listObj)){
-        console.log(`- ${k} (${v})`)
+        console.log(`- ${k} (${v})`);
     };
+
+    if (Object.keys(listObj).length === 0) console.log(`Empty list.`);
 };
