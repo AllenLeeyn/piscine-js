@@ -55,13 +55,13 @@ const ensureFileExist = async (file) => {
     try {
         await fs.access(file, fs.constants.F_OK);
     } catch (err) {
-        await fs.writeFile(file, '', 'utf8');
+        await fs.writeFile(file, '{}', 'utf8');
     };
 };
 
 const readFile = async (file) => {
     try {
-        const list = await fs.promises.readFile(file, 'utf8');
+        const list = await fs.readFile(file, 'utf8');
         return JSON.parse(list);
     } catch (err) {
         console.error('Error:', err);
@@ -70,17 +70,21 @@ const readFile = async (file) => {
 
 const readDir = async (dir) => {
     try {
-        return await fs.promises.readDir(dir, 'utf8');
+        return await fs.readdir(dir, 'utf8');
     } catch (err) {
         console.error('Error:', err);
     };
 };
-const getVipGuests = (guestList) => {
+
+const getVipGuests = async (guestList) => {
     const vipGuests = [];
-    guestList.forEach(async guest => {
-        const vipGuest = await readFile(path.join(DIRECTORY, `${guest}.json`))
-        if (vipGuest.answer === 'yes') vipGuests.push(guest);
-    });
+    for (const guest of guestList) {
+        const vipGuest = await readFile(path.join(DIRECTORY, `${guest}`));
+        
+        if (vipGuest.answer === 'yes') {
+            vipGuests.push(vipGuest);
+        }
+    }
     return vipGuests
 };
 
@@ -111,14 +115,15 @@ const saveList = async () => {
 const main = async () => {
     try{
         const guestList = await readDir(DIRECTORY);
-        const vipList = getVipGuests(guestList);
-        if (vipList.length === 0) return console.log('No one is coming');
-
-        newList.potatoes = vipList.length;
-        vipList.forEach(updateList);
-        updateListForShopping();
-        await saveList();
-
+        const vipList = await getVipGuests(guestList);
+        if (vipList.length === 0) {
+            return console.log('No one is coming')
+        } else {
+            newList.potatoes = vipList.length;
+            vipList.forEach(updateList);
+            updateListForShopping();
+            await saveList();
+        }
     } catch (err) {
         console.log(err);
     };
