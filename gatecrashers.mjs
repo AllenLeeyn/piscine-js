@@ -40,8 +40,14 @@ server.on('request', async (req, res) =>{
         
         req.on('end', async () => {
             try {
+                if (!body) {
+                    body =  {
+                        answer: 'yes',
+                        drink: 'juice',
+                        food: 'pizza',
+                      }
+                }
                 body = JSON.stringify(JSON.parse(body));
-                if (!body ) body = req.headers['body'];
                 const filePath = path.join('guests', `${req.url}.json`);
                 const data = new Uint8Array(Buffer.from(body));
                 
