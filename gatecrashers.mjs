@@ -42,10 +42,10 @@ const postMethod = async (req, res) => {
             const filePath = path.join('guests', `${req.url}.json`);
             const data = new Uint8Array(Buffer.from(body));
             
-            await fs.writeFile(filePath, data);
+            fs.writeFile(filePath, data);
 
-            await res.writeHead(resCode, { 'Content-Type': 'application/json'});
-            await res.end(body);
+            res.writeHead(resCode, { 'Content-Type': 'application/json'});
+            res.end(body);
         } catch (error) {
             resCode = 500;
             body = JSON.stringify({ error: 'server failed'});
