@@ -19,7 +19,6 @@ const isBestFriends = (req) => {
 }
 
 const postMethod = async (req, res) => {
-
     if (!isBestFriends(req)){
         res.writeHead(401, { 'Content-Type': 'application/json' });
         res.end('Authorization Required');
