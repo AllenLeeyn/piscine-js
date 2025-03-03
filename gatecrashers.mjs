@@ -42,15 +42,19 @@ const postMethod = async (req, res) => {
             body = JSON.stringify(JSON.parse(body));
             const filePath = path.join(__dirname, 'guests', `${req.url}.json`);
             const data = new Uint8Array(Buffer.from(body));
-            
+
             await fs.mkdir(path.dirname(filePath), { recursive: true });
             await fs.writeFile(filePath, data);
+
+            res.writeHead(resCode, { 'Content-Type': 'application/json'});
+            res.end(body);
         } catch (error) {
             resCode = 500;
             body = JSON.stringify({ error: 'server failed'});
+
+            res.writeHead(resCode, { 'Content-Type': 'application/json'});
+            res.end(body);
         }
-        res.writeHead(resCode, { 'Content-Type': 'application/json'});
-        res.end(body);
     });
 };
 
