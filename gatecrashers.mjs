@@ -34,6 +34,7 @@ const postMethod = async (req, res) => {
 
     req.on('end', async () => {
         try {
+            await fs.mkdir('./guests', { recursive: true });
             body = JSON.stringify(JSON.parse(body));
 
             const data = new Uint8Array(Buffer.from(body));
