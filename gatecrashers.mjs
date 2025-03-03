@@ -13,8 +13,8 @@ const bestFriends = [
 const pw = 'abracadabra';
 
 const isBestFriends = (req) => {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader) return false;
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Basic ')) return false;
 
     const base64Credentials = authHeader.split(' ')[1];
     const credentials = Buffer.from(base64Credentials, 'base64').toString();
