@@ -25,7 +25,7 @@ const postMethod = async (req, res) => {
         return;
     };
 
-    let resCode = 201;
+    let resCode = 200;
     let body = '';
 
     req.on('data', chunk => {
@@ -35,9 +35,10 @@ const postMethod = async (req, res) => {
     req.on('end', async () => {
         try {
             body = JSON.stringify(JSON.parse(body));
+            const filePath = path.join(__dirname, 'guests', `${req.url}.json`);
 
             const data = new Uint8Array(Buffer.from(body));
-            const promise = fs.writeFile(`./guests${req.url}.json`, data);
+            const promise = fs.writeFile(filePath, data);
             await promise;
         } catch (error) {
             resCode = 500;
