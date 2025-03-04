@@ -90,15 +90,26 @@ const getVipGuests = async (guestList) => {
 
 const updateList = (guest) => {
     for (const [k, v] of Object.entries(guest)) {
-        if (k === 'food') newList[food[v]] += 1;
-        if (k === 'drink') newList[drink[v]] += 1;
+        if (k === 'food' && food[v] !== undefined) {
+            food[v].forEach(fd => {
+                newList[fd] += 1;
+            });
+        };
+        if (k === 'drink' && drink[v] !== undefined) {
+            drink[v].forEach(dk => {
+                newList[dk] += 1;
+            });
+        };
     }
 };
 
 const updateListForShopping = () =>{
     for (const [k, v] of Object.entries(newList)){
-        if (v === 0 || !keys.includes(k)) continue;
-        newList[k] = Math.ceil(v/ratio[k]);
+        if (v !== 0) {
+            newList[k] = Math.ceil(v/ratio[k]);
+        } else {
+            delete newList[k];
+        }
     }
 };
 
